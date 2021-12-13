@@ -1,0 +1,11 @@
+* {
+    box-sizing: border-box;
+}
+
+.row{
+    display: flex;
+}
+
+.half-col{
+    flex: 50%;
+}

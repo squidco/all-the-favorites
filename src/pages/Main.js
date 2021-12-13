@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import FavoriteCard from "../components/FavoriteCard";
+// import "./Main.css"
+import "../assets/style.css"
 
 function Main() {
   const [favesArray, setFavesArray] = useState([]);
@@ -35,7 +37,7 @@ function Main() {
       <header>
         <h2>All the Faves</h2>
       </header>
-      <div className="card-area">
+      <div className="row">
         {favesArray.map((fav) => (
           <FavoriteCard key={fav.title} info={fav} />
         ))}
