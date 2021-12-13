@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
 import FavoriteCard from "../components/FavoriteCard";
 // import "./Main.css"
-import "../assets/style.css"
+import "../assets/style.css";
+import FavoriteModal from "../components/FavoriteModal";
 
 function Main() {
   const [favesArray, setFavesArray] = useState([]);
   const [form, setForm] = useState({});
+  const [showFavoriteModal, setShowFavoriteModal] = useState(false);
 
   useEffect(() => {
     if (localStorage.getItem("favorites") === null) {
-        localStorage.setItem("favorites", JSON.stringify([]))
+      localStorage.setItem("favorites", JSON.stringify([]));
     }
     setFavesArray(JSON.parse(localStorage.getItem("favorites")));
   }, []);
@@ -32,6 +34,10 @@ function Main() {
     }
   }
 
+  function openFavoriteModal() {
+    setShowFavoriteModal(!showFavoriteModal);
+  }
+
   return (
     <>
       <header>
@@ -42,27 +48,13 @@ function Main() {
           <FavoriteCard key={fav.title} info={fav} />
         ))}
       </div>
-      <button onClick={saveFavorite}>+</button>
-      <div>
-        <input
-          value={form.title || ""}
-          name="title"
-          type="text"
-          onChange={handleInput}
-        ></input>
-        <input
-          value={form.pic || ""}
-          name="pic"
-          type="text"
-          onChange={handleInput}
-        ></input>
-        <input
-          value={form.description || ""}
-          name="description"
-          type="text"
-          onChange={handleInput}
-        ></input>
-      </div>
+      <button onClick={openFavoriteModal}>Modal</button>
+      <FavoriteModal
+        saveFavorite={saveFavorite}
+        form={form}
+        show={showFavoriteModal}
+        handleInput={handleInput}
+      ></FavoriteModal>
     </>
   );
 }
