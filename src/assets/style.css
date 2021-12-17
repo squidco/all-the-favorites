@@ -9,3 +9,7 @@
 .half-col{
     flex: 50%;
 }
+
+.page-name{
+    margin-top: 0px;
+}

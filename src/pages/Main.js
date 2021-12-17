@@ -7,7 +7,6 @@ import FavoriteModal from "../components/FavoriteModal";
 function Main() {
   const [favesArray, setFavesArray] = useState([]);
   const [form, setForm] = useState({});
-  const [showFavoriteModal, setShowFavoriteModal] = useState(false);
 
   useEffect(() => {
     if (localStorage.getItem("favorites") === null) {
@@ -19,7 +18,6 @@ function Main() {
   function handleInput(e) {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
-    console.log(form);
   }
 
   function saveFavorite() {
@@ -34,25 +32,19 @@ function Main() {
     }
   }
 
-  function openFavoriteModal() {
-    setShowFavoriteModal(!showFavoriteModal);
-  }
-
   return (
     <>
       <header>
-        <h2>All the Faves</h2>
+        <h2 className="page-name">All the Faves</h2>
       </header>
       <div className="row">
         {favesArray.map((fav) => (
           <FavoriteCard key={fav.title} info={fav} />
         ))}
       </div>
-      <button onClick={openFavoriteModal}>Modal</button>
       <FavoriteModal
         saveFavorite={saveFavorite}
         form={form}
-        show={showFavoriteModal}
         handleInput={handleInput}
       ></FavoriteModal>
     </>
