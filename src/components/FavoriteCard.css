@@ -1,11 +1,30 @@
-.red{
-    background-color: red;
+.red {
+  background-color: red;
 }
 
-.blue{
-    background-color: blue;
+.blue {
+  background-color: blue;
 }
 
-.card-body{
-    
+.card-body {
+  display: inline-block;
+  height: 450px;
+  width: 45%;
+  margin: 0 2.5% 5% 2.5%;
+}
+
+.card-body:hover {
+  color: white;
+  opacity: 90%;
+}
+
+.card-title {
+  text-shadow: black 5px;
+  opacity: 50%;
+  margin: 0;
+}
+
+.card-image{
+    height: 100%;
+    width: 100%;
 }

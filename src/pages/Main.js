@@ -34,19 +34,25 @@ function Main() {
 
   return (
     <>
-      <header>
-        <h2 className="page-name">All the Faves</h2>
+      <header className="site-header">
+        <div className="header-wrapper">
+          <h2 className="page-name">All the Faves</h2>
+          <FavoriteModal
+            saveFavorite={saveFavorite}
+            form={form}
+            handleInput={handleInput}
+          ></FavoriteModal>
+        </div>
       </header>
-      <div className="row">
-        {favesArray.map((fav) => (
-          <FavoriteCard key={fav.title} info={fav} />
-        ))}
-      </div>
-      <FavoriteModal
-        saveFavorite={saveFavorite}
-        form={form}
-        handleInput={handleInput}
-      ></FavoriteModal>
+      <main className="site-main">
+        <div className="main-wrapper">
+          <div className="card-area">
+            {favesArray.map((fav) => (
+              <FavoriteCard key={fav.title} info={fav} />
+            ))}
+          </div>
+        </div>
+      </main>
     </>
   );
 }
