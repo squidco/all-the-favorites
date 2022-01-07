@@ -32,9 +32,9 @@ function FavoriteModal({ form, handleInput, saveFavorite }) {
               <div className="modal-input">
                 <p>Color of Background</p>
                 <input
+                  type="color"
                   value={form.pic || ""}
                   name="pic"
-                  type="text"
                   onChange={handleInput}
                 ></input>
               </div>
