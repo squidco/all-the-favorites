@@ -10,7 +10,7 @@
   position: relative;
   display: inline-block;
   padding-top: 250px;
-  width: 20%;
+  min-width: 20%;
   margin: 0 5% 10% 5%;
   border-radius: 7px;
   /* background-image: linear-gradient(

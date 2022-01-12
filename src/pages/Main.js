@@ -24,11 +24,12 @@ function Main() {
     if (localStorage.getItem("favorites") === null) {
       var newArr = [form];
       localStorage.setItem("favorites", JSON.stringify(newArr));
+      setFavesArray(JSON.parse(localStorage.getItem("favorites")));
     } else {
       var tempArr = JSON.parse(localStorage.getItem("favorites"));
       tempArr.push(form);
       localStorage.setItem("favorites", JSON.stringify(tempArr));
-      console.log(localStorage);
+      setFavesArray(JSON.parse(localStorage.getItem("favorites")));
     }
   }
 
