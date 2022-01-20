@@ -92,6 +92,15 @@
   border-radius: 5px;
 }
 
-.add-fave-button{
-   
+.add-fave-btn {
+  border: 0px solid rgb(0, 0, 0);
+  background-color: rgb(0, 209, 28);
+  font-weight: 500;
+  color: white;
+  border-radius: 2px;
+  padding: 4px 6px;
+}
+
+.add-fave-btn:hover {
+  background-color: rgb(0, 255, 55);
 }

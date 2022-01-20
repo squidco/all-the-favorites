@@ -8,6 +8,11 @@ function FavoriteModal({ form, handleInput, saveFavorite }) {
     setShowFavoriteModal(!showFavoriteModal);
   }
 
+  function confirmAdd() {
+    saveFavorite();
+    toggleFavoriteModal();
+  }
+
   if (showFavoriteModal === true) {
     return (
       <>
@@ -48,7 +53,7 @@ function FavoriteModal({ form, handleInput, saveFavorite }) {
                   onChange={handleInput}
                 ></textarea>
               </div>
-              <button className="confirm-btn" onClick={saveFavorite}>
+              <button className="confirm-btn" onClick={confirmAdd}>
                 Add Fave
               </button>
             </div>
