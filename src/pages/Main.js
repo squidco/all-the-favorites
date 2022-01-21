@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import FavoriteCard from "../components/FavoriteCard";
-// import "./Main.css"
+import SiteHeader from "../components/SiteHeader";
 import "../assets/style.css";
-import FavoriteModal from "../components/FavoriteModal";
+
 
 function Main() {
   const [favesArray, setFavesArray] = useState([]);
-  const [form, setForm] = useState({});
+  // const [form, setForm] = useState({});
 
   useEffect(() => {
     if (localStorage.getItem("favorites") === null) {
@@ -15,41 +15,14 @@ function Main() {
     setFavesArray(JSON.parse(localStorage.getItem("favorites")));
   }, []);
 
-  function handleInput(e) {
-    const { name, value } = e.target;
-    setForm({ ...form, [name]: value });
-  }
-
-  function saveFavorite() {
-    if (localStorage.getItem("favorites") === null) {
-      var newArr = [form];
-      localStorage.setItem("favorites", JSON.stringify(newArr));
-      setFavesArray(JSON.parse(localStorage.getItem("favorites")));
-    } else {
-      var tempArr = JSON.parse(localStorage.getItem("favorites"));
-      tempArr.push(form);
-      localStorage.setItem("favorites", JSON.stringify(tempArr));
-      setFavesArray(JSON.parse(localStorage.getItem("favorites")));
-    }
-  }
-
   return (
     <>
-      <header className="site-header">
-        <div className="header-wrapper">
-          <h2 className="page-name">All the Faves</h2>
-          <FavoriteModal
-            saveFavorite={saveFavorite}
-            form={form}
-            handleInput={handleInput}
-          ></FavoriteModal>
-        </div>
-      </header>
+      <SiteHeader />
       <main className="site-main">
         <div className="main-wrapper">
           <div className="card-area">
-            {favesArray.map((fav) => (
-              <FavoriteCard key={fav.title} info={fav} />
+            {favesArray.map((fav, index) => (
+              <FavoriteCard key={index} info={fav} />
             ))}
           </div>
         </div>

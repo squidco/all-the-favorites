@@ -1,11 +1,30 @@
 import "./FavoriteModal.css";
 import { useState } from "react";
 
-function FavoriteModal({ form, handleInput, saveFavorite }) {
+function FavoriteModal() {
   const [showFavoriteModal, setShowFavoriteModal] = useState(false);
+  const [form, setForm] = useState({});
 
   function toggleFavoriteModal() {
     setShowFavoriteModal(!showFavoriteModal);
+  }
+
+  function handleInput(e) {
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value });
+  }
+
+  function saveFavorite() {
+    if (localStorage.getItem("favorites") === null) {
+      var newArr = [form];
+      localStorage.setItem("favorites", JSON.stringify(newArr));
+      // setFavesArray(JSON.parse(localStorage.getItem("favorites")));
+    } else {
+      var tempArr = JSON.parse(localStorage.getItem("favorites"));
+      tempArr.push(form);
+      localStorage.setItem("favorites", JSON.stringify(tempArr));
+      // setFavesArray(JSON.parse(localStorage.getItem("favorites")));
+    }
   }
 
   function confirmAdd() {
@@ -64,7 +83,7 @@ function FavoriteModal({ form, handleInput, saveFavorite }) {
   } else
     return (
       <button className="add-fave-btn" onClick={toggleFavoriteModal}>
-        Modal
+        Add Fave
       </button>
     );
 }
