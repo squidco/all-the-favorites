@@ -13,6 +13,7 @@
 }
 
 .card {
+  transition: 400ms;
   position: relative;
   height: 250px;
   margin: 0 5% 10% 5%;
@@ -53,4 +54,6 @@
 /* hovers */
 
 .card:hover {
+  height: 255px;
+  box-shadow: inset 0 0 150px 150px rgba(255, 255, 255, 0.15);
 }
