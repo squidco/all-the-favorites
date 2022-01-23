@@ -1,7 +1,7 @@
 import "./FavoriteModal.css";
 import { useState } from "react";
 
-function FavoriteModal() {
+function FavoriteModal({updateList}) {
   const [showFavoriteModal, setShowFavoriteModal] = useState(false);
   const [form, setForm] = useState({});
 
@@ -18,17 +18,18 @@ function FavoriteModal() {
     if (localStorage.getItem("favorites") === null) {
       var newArr = [form];
       localStorage.setItem("favorites", JSON.stringify(newArr));
-      // setFavesArray(JSON.parse(localStorage.getItem("favorites")));
+     
     } else {
       var tempArr = JSON.parse(localStorage.getItem("favorites"));
       tempArr.push(form);
       localStorage.setItem("favorites", JSON.stringify(tempArr));
-      // setFavesArray(JSON.parse(localStorage.getItem("favorites")));
+      
     }
   }
 
   function confirmAdd() {
     saveFavorite();
+    updateList()
     toggleFavoriteModal();
   }
 
