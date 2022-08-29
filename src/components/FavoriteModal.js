@@ -1,9 +1,10 @@
 import "./FavoriteModal.css";
+import { v4 as uuidv4 } from "uuid";
 import { useState } from "react";
 
-function FavoriteModal({updateList}) {
+function FavoriteModal({ updateList }) {
   const [showFavoriteModal, setShowFavoriteModal] = useState(false);
-  const [form, setForm] = useState({});
+  const [form, setForm] = useState({pic: "#000000"});
 
   function toggleFavoriteModal() {
     setShowFavoriteModal(!showFavoriteModal);
@@ -14,22 +15,21 @@ function FavoriteModal({updateList}) {
     setForm({ ...form, [name]: value });
   }
 
-  function saveFavorite() {
+  function saveFavorite(input) {
     if (localStorage.getItem("favorites") === null) {
-      var newArr = [form];
+      var newArr = [input];
       localStorage.setItem("favorites", JSON.stringify(newArr));
-     
     } else {
       var tempArr = JSON.parse(localStorage.getItem("favorites"));
-      tempArr.push(form);
+      tempArr.push(input);
       localStorage.setItem("favorites", JSON.stringify(tempArr));
-      
     }
   }
 
   function confirmAdd() {
-    saveFavorite();
-    updateList()
+    const newFave = { id: uuidv4(), ...form };
+    saveFavorite(newFave);
+    updateList();
     toggleFavoriteModal();
   }
 
